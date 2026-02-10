@@ -21,31 +21,31 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/johnsundell/ink.git",
+            url: "https://github.com/johnsundell/Ink.git",
             from: "0.2.0"
         ),
         .package(
-            url: "https://github.com/johnsundell/plot.git",
+            url: "https://github.com/johnsundell/Plot.git",
             from: "0.9.0"
         ),
         .package(
-            url: "https://github.com/johnsundell/files.git",
+            url: "https://github.com/johnsundell/Files.git",
             from: "4.3.0"
         ),
         .package(
-            url: "https://github.com/johnsundell/codextended.git",
+            url: "https://github.com/johnsundell/Codextended.git",
             from: "0.1.0"
         ),
         .package(
-            url: "https://github.com/johnsundell/shellout.git",
+            url: "https://github.com/johnsundell/ShellOut.git",
             from: "2.3.0"
         ),
         .package(
-            url: "https://github.com/johnsundell/sweep.git",
+            url: "https://github.com/johnsundell/Sweep.git",
             from: "0.4.0"
         ),
         .package(
-            url: "https://github.com/johnsundell/collectionConcurrencyKit.git",
+            url: "https://github.com/johnsundell/CollectionConcurrencyKit.git",
             from: "0.1.0"
         ),
         .package(
