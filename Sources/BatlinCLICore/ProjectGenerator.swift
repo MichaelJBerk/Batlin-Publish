@@ -94,7 +94,7 @@ private extension ProjectGenerator {
 
         if repositoryURL.hasPrefix("http") || repositoryURL.hasPrefix("git@") {
             dependencyString = """
-            url: "\(repositoryURL)", from: "\(batlinBranch)"
+            url: "\(repositoryURL)", branch: "\(batlinBranch)"
             """
         } else {
             dependencyString = "path: \"\(batlinRepositoryURL.path)\""
@@ -115,7 +115,7 @@ private extension ProjectGenerator {
                 )
             ],
             dependencies: [
-                .package(name: "Batlin", \(dependencyString))
+                .package(\(dependencyString))
             ],
             targets: [
                 .executableTarget(
