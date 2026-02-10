@@ -57,7 +57,7 @@ private extension ProjectGenerator {
         /.build
         /.swiftpm
         /*.xcodeproj
-        .publish
+        .batlin
         """)
     }
 

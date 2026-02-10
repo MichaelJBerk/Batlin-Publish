@@ -95,7 +95,7 @@ private extension PublishingPipeline {
             )
 
             let internalFolder = try root.createSubfolderIfNeeded(
-                withName: ".publish"
+                withName: ".batlin"
             )
 
             let cacheFolder = try internalFolder.createSubfolderIfNeeded(
