@@ -18,7 +18,7 @@ internal struct WebsiteRunner {
 
         let outputFolder = try resolveOutputFolder()
 
-        let serverQueue = DispatchQueue(label: "Publish.WebServer")
+        let serverQueue = DispatchQueue(label: "Batlin.WebServer")
         let serverProcess = Process()
 
         print("""
@@ -63,7 +63,7 @@ private extension WebsiteRunner {
             message = """
             A localhost server is already running on port number \(portNumber).
             - Perhaps another 'publish run' session is running?
-            - Publish uses Python's simple HTTP server, so to find any
+            - Batlin uses Python's simple HTTP server, so to find any
               running processes, you can use either Activity Monitor
               or the 'ps' command and search for 'python'. You can then
               terminate any previous process in order to start a new one.

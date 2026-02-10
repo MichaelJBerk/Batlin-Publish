@@ -9,18 +9,18 @@ import Files
 
 internal struct ProjectGenerator {
     private let folder: Folder
-    private let publishRepositoryURL: URL
-    private let publishVersion: String
+    private let batlinRepositoryURL: URL
+    private let batlinBranch: String
     private let kind: ProjectKind
     private let name: String
 
     init(folder: Folder,
-         publishRepositoryURL: URL,
-         publishVersion: String,
+         batlinRepositoryURL: URL,
+         batlinBranch: String,
          kind: ProjectKind) {
         self.folder = folder
-        self.publishRepositoryURL = publishRepositoryURL
-        self.publishVersion = publishVersion
+        self.batlinRepositoryURL = batlinRepositoryURL
+        self.batlinBranch = batlinBranch
         self.kind = kind
         self.name = folder.name.asProjectName()
     }
@@ -90,24 +90,24 @@ private extension ProjectGenerator {
 
     func generatePackageFile() throws {
         let dependencyString: String
-        let repositoryURL = publishRepositoryURL.absoluteString
+        let repositoryURL = batlinRepositoryURL.absoluteString
 
         if repositoryURL.hasPrefix("http") || repositoryURL.hasPrefix("git@") {
             dependencyString = """
-            url: "\(repositoryURL)", from: "\(publishVersion)"
+            url: "\(repositoryURL)", from: "\(batlinBranch)"
             """
         } else {
-            dependencyString = "path: \"\(publishRepositoryURL.path)\""
+            dependencyString = "path: \"\(batlinRepositoryURL.path)\""
         }
 
         try folder.createFile(named: "Package.swift").write("""
-        // swift-tools-version:5.5
+        // swift-tools-version:5.7
 
         import PackageDescription
 
         let package = Package(
             name: "\(name)",
-            platforms: [.macOS(.v12)],
+            platforms: [.macOS(.v13)],
             products: [
                 .\(kind.buildProduct)(
                     name: "\(name)",
@@ -115,12 +115,12 @@ private extension ProjectGenerator {
                 )
             ],
             dependencies: [
-                .package(name: "Publish", \(dependencyString))
+                .package(name: "Batlin", \(dependencyString))
             ],
             targets: [
                 .executableTarget(
                     name: "\(name)",
-                    dependencies: ["Publish"]
+                    dependencies: [.product(name: "Batlin", package: "Batlin-Publish")]
                 )
             ]
         )
@@ -130,7 +130,7 @@ private extension ProjectGenerator {
     func generateMainFile() throws {
         let path = "Sources/\(name)/main.swift"
 
-        let websiteProtocol = (name == "Website") ? "Publish.Website" : "Website"
+        let websiteProtocol = (name == "Website") ? "Batlin.Website" : "Website"
         try folder.createFileIfNeeded(at: path).write("""
         import Foundation
         import Batlin

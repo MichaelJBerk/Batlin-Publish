@@ -10,15 +10,15 @@ import ShellOut
 
 public struct CLI {
     private let arguments: [String]
-    private let publishRepositoryURL: URL
-    private let publishVersion: String
+    private let batlinRepositoryURL: URL
+    private let batlinVersion: String
 
     public init(arguments: [String] = CommandLine.arguments,
-                publishRepositoryURL: URL,
-                publishVersion: String) {
+                batlinRepositoryURL: URL,
+                batlinBranch: String) {
         self.arguments = arguments
-        self.publishRepositoryURL = publishRepositoryURL
-        self.publishVersion = publishVersion
+        self.batlinRepositoryURL = batlinRepositoryURL
+        self.batlinVersion = batlinBranch
     }
 
     public func run(in folder: Folder = .current) throws {
@@ -30,8 +30,8 @@ public struct CLI {
         case "new":
             let generator = ProjectGenerator(
                 folder: folder,
-                publishRepositoryURL: publishRepositoryURL,
-                publishVersion: publishVersion,
+                batlinRepositoryURL: batlinRepositoryURL,
+                batlinBranch: batlinVersion,
                 kind: resolveProjectKind(from: arguments)
             )
 
@@ -55,9 +55,9 @@ public struct CLI {
 private extension CLI {
     func outputHelpText() {
         print("""
-        Publish Command Line Interface
+        Batlin Command Line Interface
         ------------------------------
-        Interact with the Publish static site generator from
+        Interact with the Batlin static site generator from
         the command line, to create new websites, or to generate
         and deploy existing ones.
 

@@ -11,12 +11,11 @@ import ShellOut
 import Codextended
 import BatlinCLICore
 
-//TODO: Update repo URL
 let cli = CLI(
-    publishRepositoryURL: URL(
-        string: "https://github.com/johnsundell/publish.git"
+    batlinRepositoryURL: URL(
+        string: "https://github.com/MichaelJBerk/Batlin-Publish"
     )!,
-    publishVersion: "0.8.0"
+    batlinBranch: "main"
 )
 
 do {

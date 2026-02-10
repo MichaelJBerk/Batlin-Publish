@@ -100,10 +100,10 @@ private extension CLITests {
 
         return CLI(
             arguments: [folder.path] + command,
-            publishRepositoryURL: URL(
+            batlinRepositoryURL: URL(
                 fileURLWithPath: repositoryFolder.path
             ),
-            publishVersion: "0.1.0"
+            batlinBranch: "main"
         )
     }
 }
