@@ -61,8 +61,13 @@ let package = Package(
         .target(
             name: "Batlin",
             dependencies: [
-                "Ink", "Plot", "Files", "Codextended",
-                "ShellOut", "Sweep", "CollectionConcurrencyKit",
+                .product(name: "Ink", package: "ink"),
+                .product(name: "Plot", package: "plot"),
+                .product(name: "Files", package: "files"),
+                .product(name: "Codextended", package: "codextended"),
+                .product(name: "ShellOut", package: "shellout"),
+                .product(name: "Sweep", package: "sweep"),
+                .product(name: "CollectionConcurrencyKit", package: "collectionConcurrencyKit"),
                 "Parsley"
             ]
         ),
