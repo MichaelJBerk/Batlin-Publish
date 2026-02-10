@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/johnsundell/files.git",
         "state": {
           "branch": null,
-          "revision": "d273b5b7025d386feef79ef6bad7de762e106eaf",
-          "version": "4.2.0"
+          "revision": "e85f2b4a8dfa0f242889f45236f3867d16e40480",
+          "version": "4.3.0"
         }
       },
       {
@@ -35,6 +35,15 @@
           "branch": null,
           "revision": "77c3d8953374a9cf5418ef0bd7108524999de85a",
           "version": "0.5.1"
+        }
+      },
+      {
+        "package": "Parsley",
+        "repositoryURL": "https://github.com/MichaelJBerk/Parsley",
+        "state": {
+          "branch": "main",
+          "revision": "bdd6bf763a7c17182f3127b4b964098db7d91188",
+          "version": null
         }
       },
       {
@@ -62,6 +71,33 @@
           "branch": null,
           "revision": "801c2878e4c6c5baf32fe132e1f3f3af6f9fd1b0",
           "version": "0.4.0"
+        }
+      },
+      {
+        "package": "swift-cmark-gfm",
+        "repositoryURL": "https://github.com/stackotter/swift-cmark-gfm",
+        "state": {
+          "branch": null,
+          "revision": "7ec44e7384793e507cf046336aef68586719a24e",
+          "version": "1.0.2"
+        }
+      },
+      {
+        "package": "SwiftDocCPlugin",
+        "repositoryURL": "https://github.com/apple/swift-docc-plugin",
+        "state": {
+          "branch": null,
+          "revision": "e977f65879f82b375a044c8837597f690c067da6",
+          "version": "1.4.6"
+        }
+      },
+      {
+        "package": "SymbolKit",
+        "repositoryURL": "https://github.com/swiftlang/swift-docc-symbolkit",
+        "state": {
+          "branch": null,
+          "revision": "b45d1f2ed151d057b54504d653e0da5552844e34",
+          "version": "1.0.0"
         }
       }
     ]

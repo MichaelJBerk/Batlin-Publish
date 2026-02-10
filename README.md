@@ -250,10 +250,10 @@ let package = Package(
 )
 ```
 
-Then import Publish wherever you’d like to use it:
+Then import Batlin wherever you’d like to use it:
 
 ```swift
-import Publish
+import Batlin
 ```
 
 For more information on how to use the Swift Package Manager, check out [this article](https://www.swiftbysundell.com/articles/managing-dependencies-using-the-swift-package-manager), or [its official documentation](https://swift.org/package-manager).

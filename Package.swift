@@ -1,7 +1,7 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 
 /**
-*  Publish
+*  Batlin
 *  Copyright (c) John Sundell 2019
 *  MIT license, see LICENSE file for details
 */
@@ -9,68 +9,84 @@
 import PackageDescription
 
 let package = Package(
-    name: "Publish",
-    platforms: [.macOS(.v12)],
+    name: "Batlin",
+    platforms: [.macOS(.v13)],
     products: [
-        .library(name: "Publish", targets: ["Publish"]),
-        .executable(name: "publish-cli", targets: ["PublishCLI"])
+        .library(name: "Batlin", targets: ["Batlin"]),
+        .executable(name: "Batlin-cli", targets: ["BatlinCLI"]),
+        .library(
+            name: "HighlightJSBatlinPlugin",
+            targets: ["HighlightJSBatlinPlugin"]
+        ),
     ],
     dependencies: [
         .package(
-            name: "Ink",
             url: "https://github.com/johnsundell/ink.git",
             from: "0.2.0"
         ),
         .package(
-            name: "Plot",
             url: "https://github.com/johnsundell/plot.git",
             from: "0.9.0"
         ),
         .package(
-            name: "Files",
             url: "https://github.com/johnsundell/files.git",
-            from: "4.0.0"
+            from: "4.3.0"
         ),
         .package(
-            name: "Codextended",
             url: "https://github.com/johnsundell/codextended.git",
             from: "0.1.0"
         ),
         .package(
-            name: "ShellOut",
             url: "https://github.com/johnsundell/shellout.git",
             from: "2.3.0"
         ),
         .package(
-            name: "Sweep",
             url: "https://github.com/johnsundell/sweep.git",
             from: "0.4.0"
         ),
         .package(
-            name: "CollectionConcurrencyKit",
             url: "https://github.com/johnsundell/collectionConcurrencyKit.git",
             from: "0.1.0"
+        ),
+        .package(
+            url: "https://github.com/apple/swift-docc-plugin", 
+            from: "1.0.0"
+        ),
+        .package(
+            url: "https://github.com/MichaelJBerk/Parsley", 
+            branch: "main"
         )
     ],
     targets: [
         .target(
-            name: "Publish",
+            name: "Batlin",
             dependencies: [
                 "Ink", "Plot", "Files", "Codextended",
-                "ShellOut", "Sweep", "CollectionConcurrencyKit"
+                "ShellOut", "Sweep", "CollectionConcurrencyKit",
+                "Parsley"
             ]
         ),
         .executableTarget(
-            name: "PublishCLI",
-            dependencies: ["PublishCLICore"]
+            name: "BatlinCLI",
+            dependencies: ["BatlinCLICore"]
         ),
         .target(
-            name: "PublishCLICore",
-            dependencies: ["Publish"]
+            name: "BatlinCLICore",
+            dependencies: ["Batlin"]
+        ),
+        .target(
+            name: "HighlightJSBatlinPlugin",
+            dependencies: ["HighlightJS", "Batlin"]
+        ),
+        .target(name: "HighlightJS"),
+        .testTarget(
+            name: "BatlinTests",
+            dependencies: ["Batlin", "BatlinCLICore"]
         ),
         .testTarget(
-            name: "PublishTests",
-            dependencies: ["Publish", "PublishCLICore"]
+            name: "HighlightJSTests",
+            dependencies: ["HighlightJS"]
         )
+      
     ]
 )
